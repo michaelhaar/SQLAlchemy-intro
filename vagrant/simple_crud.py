@@ -98,4 +98,4 @@ if __name__ == "__main__":
     # db_create(session)
     # db_read(session)
     # db_update(session)
-    db_delete(session)
+    # db_delete(session)
