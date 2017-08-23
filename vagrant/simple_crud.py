@@ -36,7 +36,13 @@ def db_read(session):
     first_result = session.query(Restaurant).first()
     print(first_result.name)
 
+    # ".all()" will give us a list of restaurant objects
+    restaurants = session.query(Restaurant).all()
+    for restaurant in restaurants:
+        print(restaurant.name+"\n")
 
+    # more query commands can be found here: 
+    # http://docs.sqlalchemy.org/en/rel_0_9/orm/query.html
 
 
 if __name__ == "__main__":
@@ -45,4 +51,5 @@ if __name__ == "__main__":
     db_session = sessionmaker(bind=engine)
     session = db_session()
 
-    db_create(session)
+    #db_create(session)
+    db_read(session)
