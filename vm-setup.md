@@ -14,7 +14,7 @@ Vagrant is the software that configures the VM and lets you share files between 
 If Vagrant is successfully installed, you will be able to run `vagrant --version`
 in your terminal to see the version number.
 
-## Usage
+## General Usage
 
 ### Clone the repository
 Clone this repository by running ``git clone [repository-url]`` in your terminal window.
