@@ -26,6 +26,8 @@ From your terminal, inside the vagrant subdirectory, run the command `vagrant up
 
 ![Screenshot of the vagrant up command](https://github.com/michi1992/SQLAlchemy-intro/blob/master/images_for_readme/varant_up.png)
 
+### Log into the virtual machine
+
 When vagrant up is finished running, you will get your shell prompt back. At this point, you can run `vagrant ssh` to log into your newly installed Linux VM!
 
 ![Screenshot of the vagrant ssh command](https://github.com/michi1992/SQLAlchemy-intro/blob/master/images_for_readme/vagrant_ssh.png)
