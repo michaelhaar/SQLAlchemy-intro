@@ -46,6 +46,7 @@ def db_read(session):
 
 
 def print_veggie_burgers(session):
+    # This is a small helper function to the db_update() function
     veggie_burgers = session.query(MenuItem).filter_by(name="Veggie Burger")
     for veggie_burger in veggie_burgers:
         print(veggie_burger.id)
@@ -73,6 +74,21 @@ def db_update(session):
     print_veggie_burgers(session)
 
 
+def db_delete(session):
+    # Assume that we want to delete "Auntie Ann's Dinner'"s spinach ice cream
+    # We need to find the corresponding entry first:
+    spinach_ice_cream = session.query(MenuItem).filter_by(name="Spinach Ice Cream").one()
+    print(spinach_ice_cream.restaurant.name)
+    # It's the correct one, because it's from "Auntie Ann's Diner'"
+    session.delete(spinach_ice_cream)
+    session.commit()
+
+    # If we are now searching form the spinach ice cream we should get
+    # a NoResultFound error, because we deleted that entry
+    spinach_ice_cream = session.query(MenuItem).filter_by(name="Spinach Ice Cream").one()
+    print(spinach_ice_cream.restaurant.name)
+
+
 if __name__ == "__main__":
     engine = create_engine('sqlite:///restaurantmenu.db')
     Base.metadata.bind = engine
@@ -81,4 +97,5 @@ if __name__ == "__main__":
 
     # db_create(session)
     # db_read(session)
-    db_update(session)
+    # db_update(session)
+    db_delete(session)
