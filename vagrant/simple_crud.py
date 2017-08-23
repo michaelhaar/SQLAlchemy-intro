@@ -14,7 +14,7 @@ def db_create(session):
     session.commit()
 
     # The following line tells us that something has been created
-    #print(session.query(Restaurant).all())
+    # print(session.query(Restaurant).all())
 
     # Let's add a MenuItem to our new restaurant
     cheesepizza = MenuItem(name="Cheese Pizza",
@@ -26,7 +26,7 @@ def db_create(session):
     session.add(cheesepizza)
     session.commit()
     # The following line tells us that something has been created
-    #print(session.query(MenuItem).all())
+    # print(session.query(MenuItem).all())
 
 
 def db_read(session):
@@ -41,8 +41,36 @@ def db_read(session):
     for restaurant in restaurants:
         print(restaurant.name+"\n")
 
-    # more query commands can be found here: 
+    # more query commands can be found here:
     # http://docs.sqlalchemy.org/en/rel_0_9/orm/query.html
+
+
+def print_veggie_burgers(session):
+    veggie_burgers = session.query(MenuItem).filter_by(name="Veggie Burger")
+    for veggie_burger in veggie_burgers:
+        print(veggie_burger.id)
+        print(veggie_burger.name)
+        print(veggie_burger.price)
+        print(veggie_burger.restaurant.name)
+        print("\n")
+
+
+def db_update(session):
+    # In this example we want to update the price of the "Veggie Burger"
+    # of the restaurant called "Urban Burger".
+    # First we need to find the corresponding entry:
+    print_veggie_burgers(session)
+    # by looking at the output, we now know that we have to update the
+    # entry with id=8.
+
+    urban_veggie_burger = session.query(MenuItem).filter_by(id=8).one()
+    print(urban_veggie_burger.price)
+    # Let's finally update the price :)
+    urban_veggie_burger.price = "$2.99"
+    session.add(urban_veggie_burger)
+    session.commit()
+
+    print_veggie_burgers(session)
 
 
 if __name__ == "__main__":
@@ -51,5 +79,6 @@ if __name__ == "__main__":
     db_session = sessionmaker(bind=engine)
     session = db_session()
 
-    #db_create(session)
-    db_read(session)
+    # db_create(session)
+    # db_read(session)
+    db_update(session)
