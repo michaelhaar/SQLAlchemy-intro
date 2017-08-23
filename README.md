@@ -24,7 +24,7 @@ We are using a virtual machine (VM) to run an SQL database server and a Python s
 6. When you are successfully logged in, type ``cd /vagrant`` to switch the working directory.
 7. Run ``python database_setup.py`` to create an empty database with Python and SQLAlchemy.
 8. Run ``python lotsofmenus.py`` to populate the database with some entries provided by Udacity.
-9. Check the ``simple_crud.py`` file out in order to see how to manipulate the database from Python and SQLALchemy.
+9. Take a closer look at the ``simple_crud.py``-file in order to see how to manipulate the database from Python and SQLALchemy.
 
 ## Authors
 
